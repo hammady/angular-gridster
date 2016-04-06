@@ -1983,8 +1983,8 @@
 	 * @param GridsterResizable
 	 * @param gridsterDebounce
 	 */
-	.directive('gridsterItem', ['$parse', 'GridsterDraggable', 'GridsterResizable', 'gridsterDebounce',
-		function($parse, GridsterDraggable, GridsterResizable, gridsterDebounce) {
+	.directive('gridsterItem', ['$parse', 'GridsterDraggable', 'GridsterResizable', 'gridsterDebounce', '$rootScope',
+		function($parse, GridsterDraggable, GridsterResizable, gridsterDebounce, $rootScope) {
 			return {
 				scope: true,
 				restrict: 'EA',
@@ -2104,7 +2104,7 @@
 						if (changedX || changedY) {
 							item.gridster.moveOverlappingItems(item);
 							gridster.layoutChanged();
-							scope.$broadcast('gridster-item-resized', item);
+							$rootScope.$broadcast('gridster-item-resized', item);
 						}
 					}
 
